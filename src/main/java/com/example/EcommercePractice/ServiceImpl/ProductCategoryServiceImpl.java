@@ -6,7 +6,6 @@ import com.example.EcommercePractice.Repository.ProductCategoryRepository;
 import com.example.EcommercePractice.Service.ProductCategoryService;
 import jakarta.transaction.Transactional;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
@@ -20,16 +19,12 @@ import java.util.Optional;
 @Slf4j
 public class ProductCategoryServiceImpl implements ProductCategoryService {
 
-    @Autowired
-    private ProductCategoryRepository productCategoryRepository;
-
-    @Autowired
-    private ProductCategoryService productCategoryService;
+    private final ProductCategoryRepository productCategoryRepository;
 
     // Removed @Value and defaultCreator as we are no longer using it
-//    public ProductCategoryServiceImpl(ProductCategoryRepository productCategoryRepository) {
-//        this.productCategoryRepository = productCategoryRepository;
-//    }
+    public ProductCategoryServiceImpl(ProductCategoryRepository productCategoryRepository) {
+        this.productCategoryRepository = productCategoryRepository;
+    }
 
     @Override
     public ProductCategory createProductCategory(ProductCategory productCategory) {
